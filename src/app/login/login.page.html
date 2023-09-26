@@ -1,0 +1,24 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-card color="light">
+  <ion-card-header>
+    <ion-card-content> Iniciar sesión: </ion-card-content> 
+      <ion-item>
+        <ion-input labelPlacement="floating" value="" type= "text" maxlength="8" [(ngModel)]="usuario" (ionInput)="validaUsuario()">
+          <div slot="label">Usuario <ion-text color="danger">(Requerido)</ion-text></div>
+        </ion-input>
+      </ion-item>
+      <ion-note color="danger" *ngIf="usuarioerror"> {{usuarioerror}} </ion-note>
+      <ion-item>
+        <ion-input labelPlacement="floating" value="" type="password"  maxlength="4" [(ngModel)]="contrasenia" (ionInput)="validaContra()">
+          <div slot="label">Contraseña <ion-text color="danger">(Requerido, 4 dígitos)</ion-text></div>
+        </ion-input>
+      </ion-item>
+      <ion-note color="danger" *ngIf="contraseniaerror"> {{contraseniaerror}} </ion-note>
+      <ion-button (click)="IniciarSesion()">Iniciar sesión</ion-button>
+  </ion-card-header>
+</ion-card>
