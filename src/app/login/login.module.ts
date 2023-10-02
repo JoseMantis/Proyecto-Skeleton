@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
-
+import { IonicStorageModule } from '@ionic/storage-angular';
 import { LoginPageRoutingModule } from './login-routing.module';
 
 import { LoginPage } from './login.page';
@@ -13,11 +13,10 @@ import { LoginPage } from './login.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    LoginPageRoutingModule
+    LoginPageRoutingModule,
+    IonicStorageModule.forRoot()
   ],
   declarations: [LoginPage]
 })
-export class LoginPageModule {
+export class LoginPageModule {}
 
- 
-}

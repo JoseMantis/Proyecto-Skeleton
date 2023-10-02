@@ -13,13 +13,44 @@
     </ion-toolbar>
   </ion-header>
 
-<ion-card color="light">
-  <ion-card-header>
+<ion-card id="Titulo" color="light">
+  <ion-card-header id="Cabezal-titulo">
   <div id="container">
-    <strong>Si</strong>
-    <p>Bienvenido a la app</p>
+    <strong>Si</strong> <br>
+    <ion-text>Bienvenido a la app, "".</ion-text>
   </div>
 </ion-card-header>
+</ion-card>
+
+<ion-card id="formulario" color="light">
+  <ion-card-header id="Cabezal-formulario">
+  <div id="container-f">
+    <strong>Ingresa tus datos:</strong>
+  </div>
+      <ion-item>
+        <ion-input labelPlacement="floating" type="text" >
+          <div slot="label"> Nombre </div>
+        </ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input labelPlacement="floating" type="text" >
+          <div slot="label"> Apellido </div>
+        </ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-select labelPlacement="floating" label="Nivel de enseñanza" label-placement="Nivel de enseñanza" placeholder="Seleccionar">
+          <ion-select-option value="Enseñanza básica">Enseñanza Básica</ion-select-option>
+          <ion-select-option value="Enseñanza media">Enseñanza Media</ion-select-option>
+          <ion-select-option value="Enseñanza avanzada">Enseñanza Avanzada</ion-select-option>
+          <ion-select-option value="ninguna">N/A</ion-select-option>
+        </ion-select>
+      </ion-item>
+    <ion-item>
+      <ion-label>Fecha</ion-label>
+      <ion-datetime presentation="date" [preferWheel]="true" [showDefaultButtons]="true"display-format = "MM/DD/YYYY" #myDatetime></ion-datetime>
+    </ion-item>
+    <ion-button (click)="confirmSelection()">Confirmar Selección</ion-button>
+  </ion-card-header>
 </ion-card>
 </ion-content>
 
