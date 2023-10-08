@@ -1,0 +1,30 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Fecha</ion-title>
+
+  <ion-segment [(ngModel)]="selectedMode" scrollable>
+  <ion-segment-button [value] ="mode" *ngFor="let mode of modes">
+    <ion-label>{{ mode }}</ion-label>
+  </ion-segment-button>
+  </ion-segment>
+</ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item (click)="showPicker = !showPicker">
+    <ion-label>Fecha</ion-label>
+    <ion-text slot="end">
+      {{ formattedString }}
+    </ion-text>
+  </ion-item>
+  <ion-datetime presentation="date" 
+    [preferWheel]="true" 
+    #datetime *ngIf="showPicker" 
+    [value]="dateValue" size="cover"
+    [value]="dateValue" size="cover"
+    (ionChange)="dateChanged(datetime.value)"
+    showDefaultButtons = "true"
+    (ionCancel)="showPicker = false;">
+  </ion-datetime>
+
+</ion-content>

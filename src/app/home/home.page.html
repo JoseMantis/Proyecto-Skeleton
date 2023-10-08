@@ -28,13 +28,13 @@
     <strong>Ingresa tus datos:</strong>
   </div>
       <ion-item>
-        <ion-input labelPlacement="floating" type="text" >
-          <div slot="label"> Nombre </div>
+        <ion-input labelPlacement="floating" type="text" [(ngModel)]="nombre">
+          <div slot="label" > Nombre </div>
         </ion-input>
       </ion-item>
       <ion-item>
-        <ion-input labelPlacement="floating" type="text" >
-          <div slot="label"> Apellido </div>
+        <ion-input labelPlacement="floating" type="text" [(ngModel)]="apellido">
+          <div slot="label" > Apellido </div>
         </ion-input>
       </ion-item>
       <ion-item>
@@ -45,12 +45,24 @@
           <ion-select-option value="ninguna">N/A</ion-select-option>
         </ion-select>
       </ion-item>
-    <ion-item>
-      <ion-label>Fecha</ion-label>
-      <ion-datetime presentation="date" [preferWheel]="true" [showDefaultButtons]="true"display-format = "MM/DD/YYYY" #myDatetime></ion-datetime>
-    </ion-item>
-    <ion-button (click)="confirmSelection()">Confirmar Selección</ion-button>
+
+      <ion-item (click)="showPicker = !showPicker">
+        <ion-label>Fecha</ion-label>
+        <ion-text slot="end">
+          {{ formattedString }}
+        </ion-text>
+      </ion-item>
+      <ion-datetime presentation="date" 
+        [preferWheel]="true" 
+        #datetime *ngIf="showPicker" 
+        [value]="dateValue" size="cover"
+        (ionChange)="dateChanged(datetime.value)"
+        showDefaultButtons = "true"
+        (ionCancel)="showPicker = false;">
+      </ion-datetime>
   </ion-card-header>
 </ion-card>
 </ion-content>
 
+<ion-button (click) = "limpiarValores()">Limpiar</ion-button>
+<ion-button (click) = "mostrarValores()">Mostrar</ion-button>

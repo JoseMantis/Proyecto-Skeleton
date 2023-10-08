@@ -14,7 +14,11 @@ const routes: Routes = [
   {
     path: 'login',
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+  },  {
+    path: 'fecha',
+    loadChildren: () => import('./fecha/fecha.module').then( m => m.FechaPageModule)
   },
+
 ];
 
 @NgModule({
