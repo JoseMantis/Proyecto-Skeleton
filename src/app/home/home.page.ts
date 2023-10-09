@@ -1,21 +1,43 @@
-import { Component} from '@angular/core';
+import { Component, ViewChild, ElementRef, AfterViewInit} from '@angular/core';
 import { format, parseISO } from 'date-fns';
-import { AlertController } from '@ionic/angular';
+import { AlertController, AnimationController} from '@ionic/angular';
 
 @Component({
-  
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage {
+
+export class HomePage implements AfterViewInit {
+
+  @ViewChild("menu", { read: ElementRef, static: true })
+  menu!: ElementRef;
+
+  constructor(private alertController: AlertController, private animationCtrl: AnimationController){
+ 
+    this.setToday();
+  
+  }
+
+  ngAfterViewInit() {
+    const animation = this.animationCtrl
+      .create()
+      .addElement(this.menu.nativeElement)
+      .duration(2500)
+      .iterations(Infinity)
+      .fromTo('transform', 'translateX(40%)', 'translateX(100%)')
+      .fromTo('opacity', '1', '0.2');
+
+      animation.play();
+  }
+
+
+  
   showPicker = false;
   dateValue = format(new Date(), 'yyyy-MM-dd') + 'T09:00:00.000Z';
   formattedString = '';
 
-  constructor(private alertController: AlertController){
-    this.setToday();
-  }
+
 
   setToday(){
     this.formattedString = format(parseISO(format(new Date(), 'yyyy-MM-dd') + 'T09:00:00.000Z'), 'dd MMM, yyyy');
